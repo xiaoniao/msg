@@ -15,9 +15,19 @@ public class HelloSender {
     @Autowired
     private AmqpTemplate amqpTemplate;
 
-    public void send() {
-        String context = "hello " + new Date();
+    public void send(SampleBean sampleBean) {
+        this.amqpTemplate.convertAndSend("hello", sampleBean);
+    }
+
+    public void sendHome() {
+        String context = "hello " + "home";
         System.out.println("Sender : " + context);
-        this.amqpTemplate.convertAndSend("hello", context);
+        this.amqpTemplate.convertAndSend("exchange", "topic:home", context);
+    }
+
+    public void sendList() {
+        String context = "hello " + "list";
+        System.out.println("Sender : " + context);
+        this.amqpTemplate.convertAndSend("exchange", "topic:list", context);
     }
 }

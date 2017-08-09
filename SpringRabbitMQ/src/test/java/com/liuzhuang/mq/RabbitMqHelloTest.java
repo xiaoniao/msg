@@ -18,6 +18,16 @@ public class RabbitMqHelloTest {
 
     @Test
     public void testHello() throws Exception {
-        helloSender.send();
+        helloSender.send(new SampleBean("sport"));
+    }
+
+    @Test
+    public void testHome() throws Exception {
+        helloSender.sendHome();
+    }
+
+    @Test
+    public void testList() throws Exception {
+        helloSender.sendList();
     }
 }

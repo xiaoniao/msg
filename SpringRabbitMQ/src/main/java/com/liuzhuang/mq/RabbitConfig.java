@@ -15,4 +15,15 @@ public class RabbitConfig {
     public Queue queue() {
         return new Queue("hello");
     }
+
+    @Bean
+    public Queue queueHome() {
+        return new Queue("topic:home");
+    }
+
+    @Bean
+    public Queue queueList() {
+        return new Queue("topic:list");
+    }
+
 }
